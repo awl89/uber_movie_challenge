@@ -30,8 +30,8 @@ Run the web application
 -------------------------
 To run the web application in developer mode (i.e. where stuff like debugging etc. is enabled), follow the following steps:
 - set up a postgres database
-- fill out the data base informations in "config.py" within the the class "DevConfig"
-- run the command "python main.py db". This will create the database table and populate it with data.
+- fill out the data base informations in "config.py" within the class "DevConfig"
+- run the command "python main.py db", which will create the database table and populate it with data.
 - run "python main.py dev" to start the web server
 - access the server at "http://localhost:5000"
 
@@ -39,6 +39,6 @@ Run the test cases
 --------------------
 To run the test cases, follow the following steps:
 - set up a postgres test database
-- fill out the data base informations in "config.py" within the the class "DevConfig" (probably the use the same as in the case above)
-- run the command "python main.py db". This will create the database table and populate it with data.
+- fill out the data base informations in "config.py" within the class "DevConfig" (probably use the same as in the case above)
+- run the command "python main.py db", which will create the database table and populate it with data.
 - run: python main.py test
