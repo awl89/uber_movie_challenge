@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>SF Movie San Francisco Map</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-middle">
+                <li><a href="/">Map</a></li>
+                <li><a href="/create_movie">Add Movie</a></li>
+                <li><a href="/list_movies">List Movies</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h3>Obs! This view is cached for 1 min.</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Location</th>
+                        <th>Fact</th>
+                        <th>Company</th>
+                        <th>Distributor</th>
+                        <th>Director</th>
+                        <th>Writer</th>
+                        <th>Actor1</th>
+                        <th>Actor2</th>
+                        <th>Actor3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for movie in movies %}
+                    <tr style="border: 1px solid black;">
+                        <td>{{ movie.title }}</td>
+                        <td>{{ movie.year }}</td>
+                        <td>{{ movie.location }}</td>
+                        <td>{{ movie.fact }}</td>
+                        <td>{{ movie.company }}</td>
+                        <td>{{ movie.distributor }}</td>
+                        <td>{{ movie.director }}</td>
+                        <td>{{ movie.writer }}</td>
+                        <td>{{ movie.actor1 }}</td>
+                        <td>{{ movie.actor2 }}</td>
+                        <td>{{ movie.actor3 }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ###################### scripts ######################-->
+    <script type="text/javascript">
+        // locate site - see: http://flask.pocoo.org/docs/0.11/patterns/jquery/
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

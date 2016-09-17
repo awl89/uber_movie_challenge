@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>SF Movie San Francisco Map</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-middle">
+                <li><a href="/">Map</a></li>
+                <li><a href="/create_movie">Add Movie</a></li>
+                <li><a href="/list_movies">List Movies</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add New Movie</h3>
+                </div>
+                <div class="panel-body">
+
+                    <form action="/create_movie" method=post>
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control input-sm" placeholder="Title">
+                            <input type="text" name="year" class="form-control input-sm" placeholder="Year">
+                            <input type="text" name="location" class="form-control input-sm" placeholder="Location">
+                            <input type="text" name="director" class="form-control input-sm" placeholder="Director">
+                            <input type="text" name="company" class="form-control input-sm" placeholder="Company">
+                            <input type="text" name="distributor" class="form-control input-sm" placeholder="Distributor">
+                            <input type="text" name="writer" class="form-control input-sm" placeholder="Writer">
+                            <input type="text" name="fact" class="form-control input-sm" placeholder="Fact">
+                            <input type="text" name="actor1" class="form-control input-sm" placeholder="Actor1">
+                            <input type="text" name="actor2" class="form-control input-sm" placeholder="Actor2">
+                            <input type="text" name="actor3" class="form-control input-sm" placeholder="Actor3">
+                        </div>
+                        <input type="submit" value="Submit Movie" class="btn btn-info btn-block">
+                    </form>
+
+                    <div class="alert alert-error">
+                    {% if location_error %}
+                        <strong> Location error </strong>
+                    {% endif %}
+
+                    {% if form %}
+                        {% for error in form.errors %}
+                            <strong>'{{ form[error].label }}' </strong> - {{form.errors[error][0] }} <br/>
+                    {% endfor %}
+                    {% endif %}                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ###################### scripts ######################-->
+    <script type="text/javascript">
+        // locate site - see: http://flask.pocoo.org/docs/0.11/patterns/jquery/
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

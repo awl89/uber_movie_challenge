@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>SF Movie San Francisco Map</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-middle">
+                <li><a href="/">Map</a></li>
+                <li><a href="/create_movie">Add Movie</a></li>
+                <li><a href="/list_movies">List Movies</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <div class="ui-widget">
+                    <label>Search movie title: </label>
+                    <input id="movie-title" name="title" class="input-sm" />
+                    <input type="button" id="clear" name="clear" value="Clear Markers" class="btn btn-info" />
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">San Francisco Movie Map</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="map" class="container-fluid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ###################### scripts ######################-->
+    <script type="text/javascript">
+        // locate site - see: http://flask.pocoo.org/docs/0.11/patterns/jquery/
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key={{API_KEY}}"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+
+    </body>
+</html>
