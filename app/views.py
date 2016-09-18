@@ -17,7 +17,6 @@ def list_is_empty(l):
 
 def get_lat_lng(location):
     location_utf8 = urllib2.quote(location.encode("utf8"))
-    print location_utf8
     request = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location_utf8 + ",+CA&key=" + app.config["API_KEY"]
     response = json.load(urllib2.urlopen(request))
 
@@ -28,7 +27,6 @@ def get_lat_lng(location):
     lat = float(coordinates['lat'])
     lng = float(coordinates['lng'])
 
-    print lat, lng
     return lat, lng
     
 '''
