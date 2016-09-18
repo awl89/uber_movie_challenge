@@ -77,7 +77,6 @@ def create_movie():
                         float(lng))
             db.session.add(movie)
             db.session.commit()
-            print "aaaaaaaaaaaaaaaaaa"
             return redirect('/')
             
     return render_template('create_movie.html', form=form, location_error = False)
